@@ -9,6 +9,7 @@ public class SearchMobile {
     public void  searchMobile () throws InterruptedException {
         new YandexMarketMainPage ().choseHorizontalTabMenu("Все категории").focusCategory("Электроника").choiseSubCategory("Мобильные телефоны");
         new YandexMarketFiltrationPage().choseFilterWithCheckboxes("Производитель","Xiaomi");
+
         sleep(2000);
 
 
