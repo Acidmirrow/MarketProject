@@ -9,8 +9,8 @@ public class SearchMobile {
     public void  searchMobile () throws InterruptedException {
         new YandexMarketMainPage ().choseHorizontalTabMenu("Все категории").focusCategory("Электроника").choiseSubCategory("Мобильные телефоны");
         new YandexMarketFiltrationPage().choseFilterWithCheckboxes("Производитель","Xiaomi").deviceInFilteringResults("Смартфон Xiaomi Mi6 4/64GB");
+        System.out.println(new YandexMarketDevicePage().tabsInDevice("Характеристики").getDeviceFeatureValue("Видеопроцессор"));
 
-        sleep(2000);
 
 
     }
