@@ -8,6 +8,7 @@ public class YandexMarketDevicePage {
 
     public SelenideElement tabs = $x("//ul[@class='n-product-tabs__list']");
 
+
     public YandexMarketDevicePage tabsInDevice(String nameOfTab) {
         tabs.$x("//a[.='"+nameOfTab+"']").click();
         tabs.$x("//a[.='"+nameOfTab+"']/ancestor::li[contains(@class,'selected')]").shouldBe(Condition.exist);
@@ -15,7 +16,7 @@ public class YandexMarketDevicePage {
     }
 
     public String getDeviceFeatureValue(String nameOfFeature) {
-        return $x("//dt[.='"+nameOfFeature+"']/following-sibling::dd/span").getValue();
+        return $x("//dt[.='"+nameOfFeature+"']/following-sibling::dd/span").getText();
     }
 
 }
