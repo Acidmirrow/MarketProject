@@ -1,5 +1,7 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import cucumber.api.java.ru.Когда;
+import cucumber.api.java.ru.Тогда;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$$x;
@@ -12,25 +14,25 @@ public class YandexMarketMainPage  extends InitMarketPage{
  private ElementsCollection subCategories = $$x("//div[contains(@class,'n-w-tab__column n-w-tab__column_type_navigation-menu-vertical')]//a[text()='Электроника']/following-sibling::div//a");
 
 
-    @Step("Выбор категории из меню заголовка")
+    @Когда("Выбираем меню из горизонтальной панели")
     public YandexMarketMainPage choseHorizontalTabMenu(String nameOfMenu) {
          horizontalTabs.findBy(Condition.textCaseSensitive(nameOfMenu)).click();
          return this;
     }
 
-    @Step("Выбор категории")
+    @Когда("Выбираем категории")
     public YandexMarketMainPage choiseCategory(String nameOfCategory) {
         categories.filter(Condition.exactTextCaseSensitive(nameOfCategory)).shouldHaveSize(1).get(0).click();
         return this;
     }
 
-    @Step("Фокус категории")
+    @Тогда("Наводим курсор на категорию")
     public YandexMarketMainPage focusCategory(String nameOfCategory) {
         categories.findBy(Condition.exactTextCaseSensitive(nameOfCategory)).shouldBe(Condition.visible).hover();
         return this;
     }
 
-    @Step("Выбор подкатегории")
+    @Тогда("Выбираем категорию")
     public YandexMarketFiltrationPage choiseSubCategory(String nameOfSubCategory) {
         subCategories.findBy(Condition.exactTextCaseSensitive(nameOfSubCategory)).click();
         return new YandexMarketFiltrationPage();

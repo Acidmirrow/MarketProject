@@ -1,5 +1,7 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import cucumber.api.java.ru.Когда;
+import cucumber.api.java.ru.Тогда;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -16,7 +18,7 @@ public class YandexMarketFiltrationPage {
     private SelenideElement resultsgrid = $x("//div[contains(@class,'n-snippet-list_type_grid')]");
     private SelenideElement spinerinshowmoredevice = $x("//div[@class='spin spin_theme_gray-24 i-bem spin_js_inited spin_progress_yes']");
 
-
+    @Когда("Пользователь выбирает фильтр")
     public YandexMarketFiltrationPage choseFilterWithCheckboxes(String nameOfFilter, String nameOfParameter) {
         SelenideElement availableElements = filters.$x("//legend[text()='"+nameOfFilter+"']/ancestor::fieldset");
         SelenideElement parameterInFilter = availableElements.$x("//span[text()='"+nameOfParameter+"']/ancestor::a//input");
@@ -26,6 +28,7 @@ public class YandexMarketFiltrationPage {
         return this;
     }
 
+    @Тогда("Выбираем устройство")
     public YandexMarketFiltrationPage deviceInFilteringResults(String nameofdevice) {
         while(viewmore.exists()){
             viewmore.scrollIntoView(true).click();
